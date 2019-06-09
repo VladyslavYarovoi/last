@@ -31,11 +31,10 @@ let finalPrice = credits - totalPrice;
 
 if(droidsToBuy === 0) {
   alert('Отменено пользователем!');
-} else if(droidsToBuy > null) {
-  if(totalPrice > credits) {
+} else if(totalPrice > credits) {
     alert('Недостаточно средств на счету!');
   } else {
     confirm(`Вы купили ${droidsToBuy} дроидов, на счету осталось ${finalPrice} кредитов`);
   }
-}
+
 
