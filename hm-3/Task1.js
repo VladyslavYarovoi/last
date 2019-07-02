@@ -40,23 +40,20 @@ if(login.length >= 4 && login.length <= 16) {
 };
 
 const isLoginUnique = function(logins, login) {
-  if (!logins.includes(login)){
-    message1 = true;
-  } else {
-    message1 = false;
-  }
+  message1 = logins.includes(login);
   return message1
 };
+
 
 const addLogin = function(logins, login) {
     isLoginValid(login)
     if(message !== true) {
-    console.log('Ошибка! Логин должен быть от 4 до 16 символов')
+      console.log('Ошибка! Логин должен быть от 4 до 16 символов')
   }
   isLoginUnique(logins, login)
-  if(message1 === false) {
+  if(message1 === true) {
     console.log('Такой логин уже используется!');
-  } else if(message1 === true && message === true) {
+  } else if(message1 === false && message === true) {
       logins.push(login)
       console.log('Логин успешно добавлен!');
       console.log(logins);
