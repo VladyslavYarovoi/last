@@ -67,4 +67,8 @@ addLogin(logins, 'Zod'); // 'Ошибка! Логин должен быть от
 addLogin(logins, 'jqueryisextremelyfast'); // 'Ошибка! Логин должен быть от 4 до 16 символов'
 
 
+<<<<<<< HEAD
 // addLogin(logins, question)
+=======
+// addLogin(logins, question)
+>>>>>>> 6f2189a514e69755227cbdc52edc1506c15e023c
