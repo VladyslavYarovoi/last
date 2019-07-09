@@ -29,10 +29,10 @@ let login;
 let message;
 let message1;
 
-let question = prompt("Введите логин!");
+// let question = prompt("Введите логин!");
 
 const isLoginValid = function(login) {
-if(Number(login.length) >= 4 && Number(login.length) <= 16) {
+if(login.length >= 4 && login.length <= 16) {
     message = true;
     } else {
         message = false; }
@@ -40,34 +40,31 @@ if(Number(login.length) >= 4 && Number(login.length) <= 16) {
 };
 
 const isLoginUnique = function(logins, login) {
-  if (!logins.includes(login)){
-    message1 = true;
-  } else {
-    message1 = false;
-  }
+  message1 = logins.includes(login);
   return message1
 };
+
 
 const addLogin = function(logins, login) {
     isLoginValid(login)
     if(message !== true) {
-    alert('Ошибка! Логин должен быть от 4 до 16 символов')
+      console.log('Ошибка! Логин должен быть от 4 до 16 символов')
   }
   isLoginUnique(logins, login)
-  if(message1 === false) {
-    alert('Такой логин уже используется!');
-  } else if(message1 === true && message === true) {
+  if(message1 === true) {
+    console.log('Такой логин уже используется!');
+  } else if(message1 === false && message === true) {
       logins.push(login)
-      alert('Логин успешно добавлен!');
+      console.log('Логин успешно добавлен!');
       console.log(logins);
   }
 };
 
 
-// addLogin(logins, 'Ajax'); // 'Логин успешно добавлен!'
-// addLogin(logins, 'robotGoogles'); // 'Такой логин уже используется!'
-// addLogin(logins, 'Zod'); // 'Ошибка! Логин должен быть от 4 до 16 символов'
-// addLogin(logins, 'jqueryisextremelyfast'); // 'Ошибка! Логин должен быть от 4 до 16 символов'
+addLogin(logins, 'Ajax'); // 'Логин успешно добавлен!'
+addLogin(logins, 'robotGoogles'); // 'Такой логин уже используется!'
+addLogin(logins, 'Zod'); // 'Ошибка! Логин должен быть от 4 до 16 символов'
+addLogin(logins, 'jqueryisextremelyfast'); // 'Ошибка! Логин должен быть от 4 до 16 символов'
 
 
-addLogin(logins, question)
+// addLogin(logins, question)
