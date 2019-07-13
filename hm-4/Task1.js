@@ -45,6 +45,7 @@ const notepad = {
     },
     updateNoteContent(id, updatedContent) {
       const updObj = this.findNoteById(id);
+      // this.findNoteById.title = updatedContent.title
       let final = Object.assign({}, updObj, updatedContent);
       return final
     },
