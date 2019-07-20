@@ -6,64 +6,70 @@
 class Notepad {
   constructor(notes) {
     this._notes = notes;
-  };
+  }
+
   get notes() {
     return this._notes
   }
-}
-
-Notepad.prototype.findNoteById = function (id) {
-  for (let key of this.notes) {
-    if (key.id === id) {
-      return key;
-    }
-  }
-};
-Notepad.prototype.saveNote = function (note) {
-  this.notes.push(note);
-  return note;
-};
-Notepad.prototype.deleteNote = function (id) {
-  const delObj = this.findNoteById(id);
-  this.notes.splice(this.notes.indexOf(delObj), 1)
-};
-Notepad.prototype.updateNoteContent = function (id, updatedContent) {
-  const updObj = this.findNoteById(id);
-  let final = {
-    ...updObj,
-    ...updatedContent
-  };
-  return final
-};
-Notepad.prototype.updateNotePriority = function (id, priority) {
-  const changPrior = this.findNoteById(id);
-  changPrior.priority = priority;
-  return changPrior
-};
-Notepad.prototype.filterNotesByQuery = function (query) {
-  let newArr = [];
-  for (let key of this.notes) {
-    for (const i in key) {
-      let lowCaseTitle = key.title.toLowerCase();
-      let lowCaseBody = key.body.toLowerCase();
-      if (lowCaseTitle.includes(query.toLowerCase()) || lowCaseBody.includes(query.toLowerCase())) {
-        newArr.push(key)
-        return newArr
+  findNoteById (id) {
+      for (let key of this.notes) {
+        if (key.id === id) {
+          return key;
+        }
       }
-    }
-  }
-};
+    };
+    saveNote (note) {
+     this.notes.push(note);
+     return note;
+   };
+   deleteNote (id) {
+     const delObj = this.findNoteById(id);
+     this.notes.splice(this.notes.indexOf(delObj), 1)
+   };
+   updateNoteContent (id, updatedContent) {
+     const updObj = this.findNoteById(id);
+     let final = {
+       ...updObj,
+       ...updatedContent
+     };
+     return final
+   };
+   updateNotePriority (id, priority) {
+     const changPrior = this.findNoteById(id);
+     changPrior.priority = priority;
+     return changPrior
+   };
+   filterNotesByQuery (query) {
+     let newArr = [];
+     for (let key of this.notes) {
+       for (const i in key) {
+         let lowCaseTitle = key.title.toLowerCase();
+         let lowCaseBody = key.body.toLowerCase();
+         if (lowCaseTitle.includes(query.toLowerCase()) || lowCaseBody.includes(query.toLowerCase())) {
+           newArr.push(key)
+           return newArr
+         }
+       }
+     }
+   };
+   
+   filterNotesByPriority (priority) {
+     let newArrPrior = [];
+     for (let key of this.notes) {
+       if (key.priority === priority) {
+         newArrPrior.push(key)
+         console.log(newArrPrior);
+         return newArrPrior
+       }
+     }
+   };
 
-Notepad.prototype.filterNotesByPriority = function (priority) {
-  let newArrPrior = [];
-  for (let key of this.notes) {
-    if (key.priority === priority) {
-      newArrPrior.push(key)
-      console.log(newArrPrior);
-      return newArrPrior
-    }
-  }
-};
+   static Priority = {
+    LOW: 0,
+    NORMAL: 1,
+    HIGH: 2,
+  };
+}
 
 
 
@@ -80,11 +86,6 @@ Notepad.prototype.filterNotesByPriority = function (priority) {
 // 
 
 
-Notepad.Priority = {
-  LOW: 0,
-  NORMAL: 1,
-  HIGH: 2,
-};
 
 
 
