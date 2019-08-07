@@ -147,20 +147,7 @@ const createListItem = ({id, title, body, priority}) => {
 
 
 const footer = (prior) => {
-  // const refFooter = {
-  //   noteFooter: createEl('footer', 'note__footer'),
-  //   noteSectionFirst : createEl('button', 'action'),
-  //   btnDecrease: createEl('button', 'action'),
-  //   btnIncrease: createEl('button', 'action'),
-  //   iconMore: createEl('i', 'material-icons', 'action-icon'),
-  //   iconLess: createEl('i', 'material-icons', 'action-icon'),
-  //   priority: createEl('span', 'note__priority'),
-  //   noteSectionSecond: createEl('section', 'note__section'),
-  //   btnEditNote: createEl('button', 'action'),
-  //   btnDeleteNote: createEl('button', 'action'),
-  //   iconEdit: createEl('i', 'material-icons', 'action-icon'),
-  //   iconDelete: createEl('i', 'material-icons', 'action-icon'),
-  // }
+
 
   const noteFooter = createEl('footer', 'note__footer');  
   const noteSectionFirst = createEl('section', 'note__section');
@@ -223,37 +210,3 @@ renderNoteList(ref.noteList, allNotes);
 
 
 
-
-
-
-
-
-
-
-// ​
-// const ref = {
-//   ul: document.querySelector('.note-list'),
-// };
-// ​
-// const createListItem = note => {
-//   const listItem = createElement('li', 'note-list__item');
-//   const notes = createElement('div', 'note');
-//   //title
-//   const noteContent = createElement('div', 'note__content');
-//   const title = createElement('h2', 'note__title');
-//   title.textContent = note.title;
-//   //body
-//   const body = createElement('p', 'note__body');
-//   body.textContent = note.body;
-//   noteContent.append(title, body);
-//   notes.append(noteContent);
-//   listItem.append(notes);
-//   return listItem;
-// };
-// ​
-// const renderNoteList = (listRef, notes) => {
-//   const renderList = notes.map(elem => createListItem(elem));
-//   listRef.append(...renderList);
-// };
-// ​
-// renderNoteList(ref.ul, notes.note);
