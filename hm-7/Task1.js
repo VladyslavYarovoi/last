@@ -139,18 +139,31 @@ console.log(getUsersWithAge(users, 30, 40));
 
 
 
-const getTotalBalance = users => users.reduce((acc, user) => acc + user.balance, 0);
+const getTotalBalance = users => users.reduce((acc, user) => {acc += user.balance; return acc}, 0);
 
 console.log(getTotalBalance(users)); // 20916
 
 
 
 
-const getUsersByFriend = (users, name) => (users.filter(user => user.friends.reduce((acc, friend) => acc + (friend === name), 0)));
+const getUsersByFriend = (users, name) => users.map(user => user.friends.map(friend => friend.includes(name)));
+
 // console.log(user.friends);
 
 console.log(getUsersByFriend(users, 'Briana Decker')); // [ 'Sharlene Bush', 'Sheree Anthony' ]
 console.log(getUsersByFriend(users, 'Goldie Gentry')); // [ 'Elma Head', 'Sheree Anthony' ]
 
+
+
+//      ДОП ЗАДАНИЯ
+
+
+
+
+
+const getUniqueSkills = users => users.reduce((acc, user) => {acc.push(...user.skills); return acc;}, []);
+
+console.log(getUniqueSkills(users));
+// [ 'adipisicing', 'amet', 'anim', 'commodo', 'culpa', 'elit', 'ex', 'ipsum', 'irure', 'laborum', 'lorem', 'mollit', 'non', 'nostrud', 'nulla', 'proident', 'tempor', 'velit', 'veniam' ]
 
 
