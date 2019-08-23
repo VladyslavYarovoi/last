@@ -9,6 +9,7 @@ const createEl = (tag, classN) => {
 };
 
 
+
 const createListItem = ({id, title, body, priority}) => {
     const refCreatEl = {
       listItem: createEl('li', 'note-list__item'),
@@ -23,8 +24,8 @@ const createListItem = ({id, title, body, priority}) => {
     refCreatEl.noteContent.appendChild(refCreatEl.noteTitle);
     refCreatEl.noteContent.appendChild(refCreatEl.noteBody);
     refCreatEl.note.appendChild(refCreatEl.noteContent);
+    refCreatEl.note.appendChild(footer(priority));
     refCreatEl.listItem.appendChild(refCreatEl.note);
-    refCreatEl.listItem.appendChild(footer(priority));
   
     return refCreatEl.listItem
   }

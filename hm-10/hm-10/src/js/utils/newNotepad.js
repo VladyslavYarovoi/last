@@ -1,5 +1,4 @@
-import Notepad from  "./class";
-import { PRIORITY_TYPES } from  "./constants";
+import Notepad from  "./Notepad";
 import initialNotes from '../../assets/notes.json'
 
 
