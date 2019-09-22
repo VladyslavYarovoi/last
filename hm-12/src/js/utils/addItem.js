@@ -1,4 +1,4 @@
-import NotepadNew from "./newNotepad";
+import notepadNew from "./newNotepad";
 import ref from  "./refs";
 import { Notyf } from 'notyf';
 import 'notyf/notyf.min.css'
@@ -22,18 +22,17 @@ const addItem = evt => {
     } else {
       localStorage.remove('wow');
 
-    const item = NotepadNew.addItem(inputF, texteriaF);
+    const item = notepadNew.addItem(inputF, texteriaF);
       const newItem = cardTemplate(item);
 
 
     ref.noteList.insertAdjacentHTML('beforeend', newItem);
 
-    // localStorage.remove('inputF');
     ref.form.reset();
     notyf.success('Заметка добавлена');
     MicroModal.close('note-editor-modal');
-    localStorage.set('wow', NotepadNew._notes);
-    console.log(NotepadNew._notes);
+    localStorage.set('wow', notepadNew._notes);
+    console.log('additem',notepadNew._notes);
     }
 };
  

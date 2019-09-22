@@ -5,7 +5,7 @@ import initialNotes from '../src/assets/notes.json'
 
 
 import { PRIORITY_TYPES, ICON_TYPES, NOTE_ACTIONS } from  "./js/utils/constants";
-import NotepadNew from "./js/utils/newNotepad"
+import notepadNew from "./js/utils/newNotepad"
 import ref from  "./js/utils/refs";
 import addItem from  "./js/utils/addItem";
 import { Notyf } from 'notyf';
@@ -13,7 +13,7 @@ import 'notyf/notyf.min.css'
 import MicroModal from 'micromodal';
 import localStorage from './js/utils/localStorage';
 
-const allNotes = NotepadNew.notes;
+const allNotes = notepadNew.notes;
 const notyf = new Notyf();
 
 
@@ -31,14 +31,11 @@ const renderNoteList = (noteListRef, allNotes) => {
 
 
 
-// renderNoteList(ref.noteList, allNotes);
-
-
 ref.form.addEventListener('submit', addItem);
 
 
 const searchForm = evt => {
-    const findNote = NotepadNew.search(evt.target.value);
+    const findNote = notepadNew.search(evt.target.value);
     renderNoteList(ref.noteList, findNote)
 }
 
@@ -50,14 +47,16 @@ ref.search.addEventListener("input", searchForm);
 
 
 const deleteListItem = element => {
+    
     const parentListItem = element.closest('.note-list__item');
     const id = parentListItem.dataset.id;
 
-    NotepadNew.deleteNote(id)
+    notepadNew.deleteNote(id);
     parentListItem.remove()
     notyf.success('Заметка удалена')
-    // localStorage.remove('wow');
-    localStorage.set('wow', allNotes);
+    console.log('delete', notepadNew._notes);
+    
+    localStorage.set('wow', notepadNew._notes);
 }
 
 const checkClick = ({target}) => {
@@ -106,8 +105,5 @@ if(localStorage.get('wow')){
   markup = createCard(localStorage.get('wow'));
 }
 
-// const markup = createCard(initialNotes);
-// let markup = createCard(localStorage.get('wow'));
-// console.log(JSON.stringify(localStorage.get('wow')));
 
 ref.noteList.insertAdjacentHTML('beforeend', markup);

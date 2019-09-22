@@ -36,23 +36,15 @@ export default class Notepad {
   
 
   search(value) {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        const finall =  this._notes.filter(elem => elem.title.toLowerCase().includes(value.toLowerCase()) || elem.body.toLowerCase().includes(value.toLowerCase()));
-    resolve(finall);
-    reject(Error);
-  }, 0)});
-       }
+    const finall =  this._notes.filter(elem => elem.title.toLowerCase().includes(value.toLowerCase()) || elem.body.toLowerCase().includes(value.toLowerCase()));
+    return finall
+         }
 
 
   deleteNote(id) {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-    this._notes = this._notes.filter(item => item.id !== id);
-    // localStorage.setItem('key', JSON.stringify(this._notes))
-    resolve(this._notes);
-    reject(Error);
-  }, 0)});
+
+     return this._notes = this._notes.filter(item => item.id !== id);
+
   }
 
 }
