@@ -19,7 +19,6 @@ const notyf = new Notyf();
 
 
 
-// console.log(allNotes);
 
 
 const renderNoteList = (noteListRef, allNotes) => {
@@ -51,12 +50,13 @@ const deleteListItem = element => {
     const parentListItem = element.closest('.note-list__item');
     const id = parentListItem.dataset.id;
 
-    notepadNew.deleteNote(id);
-    parentListItem.remove()
-    notyf.success('Заметка удалена')
-    console.log('delete', notepadNew._notes);
-    
-    localStorage.set('wow', notepadNew._notes);
+    notepadNew.deleteNote(id).then(
+      note => {
+        parentListItem.remove()
+        notyf.success('Заметка удалена')
+        localStorage.set('wow', notepadNew._notes);
+      }
+    );
 }
 
 const checkClick = ({target}) => {

@@ -16,30 +16,25 @@ const notyf = new Notyf();
 
 
 const addItem = evt => {
-  // evt.preventDefault();
+  evt.preventDefault();
   const [input, texteria] = evt.target.elements;
   let inputF = input.value;
   let texteriaF = texteria.value;
   if (inputF === '' || texteriaF === '') {
     return notyf.error('Необходимо заполнить все поля!')
   } else {
-    localStorage.remove('wow');
 
-    const item = notepadNew.addItem(inputF, texteriaF);
-    const promItem = item.then(data => console.log(JSON.stringify(data)));
-   console.log('s item', item.then(data => console.log(JSON.stringify(data))));
-     
-    const newItem = cardTemplate(promItem)
-    // console.log("promItem", promItem);
+    const item = notepadNew.addItem(inputF, texteriaF).then(
+      note => {
+        const newItem = cardTemplate(note)
+        ref.noteList.insertAdjacentHTML('beforeend', newItem);
+        ref.form.reset();
+        notyf.success('Заметка добавлена');
+        MicroModal.close('note-editor-modal');
+        localStorage.set('wow', notepadNew._notes);
 
-
-    ref.noteList.insertAdjacentHTML('beforeend', newItem);
-
-    ref.form.reset();
-    notyf.success('Заметка добавлена');
-    MicroModal.close('note-editor-modal');
-    localStorage.set('wow', notepadNew._notes);
-    console.log('additem', notepadNew._notes);
+      }
+    );
   }
 };
 
