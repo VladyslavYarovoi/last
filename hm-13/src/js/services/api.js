@@ -3,7 +3,7 @@ const API = "http://localhost:3000/notes";
 
 
 
-export const GET = fetch(API)
+export const saveNote = () => fetch(API)
 .then(response => {
     if(response.ok) {
         return response.json()

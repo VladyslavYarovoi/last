@@ -1,11 +1,8 @@
 import Notepad from  "./Notepad";
 import { PRIORITY_TYPES } from  "./constants";
-import initialNotes from '../../assets/notes.json'
-
-
+import initialNotes from '../../../db.json'
 
 
 const notepadNew = new Notepad(initialNotes);
 
-
-export default notepadNew
+ export default notepadNew

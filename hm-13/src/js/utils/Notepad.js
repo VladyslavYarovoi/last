@@ -7,23 +7,19 @@ import * as api from "../services/api";
 
 
 export default class Notepad {
-  constructor(notes) {
-    this._notes = [];
+  constructor(notes = []) {
+    this._notes = notes;
   };
   
 
-  // get() {
-  //   return api.GET().then(notes =>{ 
-  //     this._notes = notes;
-  //     return this._notes;
-  //   })
-  // };
-
-  // get notes() {
-  //   return new Promise((resolve, reject) => {
-  //   setTimeout(() => resolve(this._notes), 0)
-  //   }) 
-  //   };
+  get() {
+    return api.saveNote().then(notes =>{ 
+      this._notes = notes;
+      // console.log(this._notes);
+      
+      return this._notes;
+    })
+  };
 
   findNoteById(id) {
     for (let key of this.notes) {
@@ -53,8 +49,6 @@ export default class Notepad {
     this._notes = this._notes.filter(item => item.id !== id);
     return id
   })
-
-    
 
   }
 

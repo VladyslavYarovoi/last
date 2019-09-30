@@ -12,7 +12,7 @@ import { Notyf } from 'notyf';
 import 'notyf/notyf.min.css'
 import MicroModal from 'micromodal';
 
-const allNotes = notepadNew.notes;
+// const allNotes = notepadNew.notes;
 const notyf = new Notyf();
 
 
@@ -27,7 +27,6 @@ const renderNoteList = (noteListRef, allNotes) => {
 }
 
 
-
 ref.form.addEventListener('submit', addItem);
 
 
@@ -39,12 +38,8 @@ const searchForm = evt => {
 ref.search.addEventListener("input", searchForm);
 
 
-
-
-
-
 const deleteListItem = element => {
-    
+  event.preventDefault();
     const parentListItem = element.closest('.note-list__item');
     const id = parentListItem.dataset.id;
 
@@ -96,8 +91,10 @@ const createCard = cards => {
   const markup = cards.map(card => cardTemplate(card)).join('');
   return markup
 }
-let markup = createCard(initialNotes);
+const servNotes = notepadNew.get().then(posts => {
+  // event.preventDefault();
+  ref.noteList.insertAdjacentHTML('beforeend', createCard(posts));
+});
 
 
 
-ref.noteList.insertAdjacentHTML('beforeend', markup);
